@@ -28,11 +28,15 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  // Solution code here...
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
-  // Solution code here...
+  let thisArr = arr;
+  for(let i = 0; i < times; i ++) {
+    callback(arr, num);
+  }
+  return thisArr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -146,7 +150,7 @@ describe('Testing challenge 5', () => {
 });
 
 describe('Testing challenge 6', () => {
-  const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
+  const inventory = [{ name: 'apples', available: true, }, { name: 'pears', available: true, }, { name: 'oranges', available: false, }, { name: 'bananas', available: true, }, { name: 'blueberries', available: false, }];
 
   test('It should only add the available items to the list', () => {
     expect(createList(inventory)).toStrictEqual(['apples', 'pears', 'bananas']);
