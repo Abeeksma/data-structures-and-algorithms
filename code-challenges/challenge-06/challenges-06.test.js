@@ -86,10 +86,17 @@ Write a function named getHouses that returns a new array containing the names o
 
 const getHouses = (arr) => {
   let houses = [];
- 
+  arr.forEach((item) => {
+    houses.push(item.house);
+  });
   return houses;
 };
 
+/* let houses = arr.map((item) => {
+    return item.house;
+});
+
+*/
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4 (will be the simal to 5)
 
@@ -103,7 +110,11 @@ hasChildrenValues(characters, 'Eddard') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
+  let thisName = arr.filter((item) => item.name === character);
+  if(thisName[0].children.length > 0) {
+    return true;
+  }
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -115,7 +126,11 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+  let thisName = arr.filter((item) => item.name === character);
+  if(thisName[0].children.length > 0) {
+    return true;
+  }
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -129,8 +144,12 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 ------------------------------------------------------------------------------------------------ */
 
 const houseSize = (arr) => {
-  const sizes = [];
-  // Solution code here...
+  const sizes = arr.map((item) => {
+    let houseSize = {}
+    houseSize.house = item.house;
+    houseSize.members = 1 + item.children.length + (item.spouse ? 1 : 0);
+    return houseSize;
+  });
   return sizes;
 };
 
@@ -153,8 +172,15 @@ For example: [ { house: 'Stark', members: 6 }, { house: 'Arryn', members: 2 }, .
 const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 
 const houseSurvivors = (arr) => {
-  const survivors = [];
-  // Solution code here...
+  const survivors = arr.map((item) => {
+    const houseSize = {};
+    houseSize.house = item.house;
+    houseSize.members = 1 + item.children.length + (item.spouse ? 1 : 0);
+    if(deceasedSpouses.indexOf(item.spouse) > -1){
+      houseSize.members -= 1;
+    }
+    return houseSize;
+  });
   return survivors;
 };
 
