@@ -10,7 +10,7 @@ Note: You may not use the array's built-in length property.
 
 const countNumberOfElements = (arr) => {
   return arr.reduce(acc => {
-    return acc +1;
+    return acc + 1;
   },0);
 };
 /* ------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ let starWarsData = [{
   skin_color: 'gold',
   eye_color: 'yellow',
   birth_year: '112BBY',
-  gender: 'n/a'},
+  gender: 'n/a',},
 {
   name: 'R2-D2',
   height: '96',
@@ -46,7 +46,7 @@ let starWarsData = [{
   skin_color: 'white, blue',
   eye_color: 'red',
   birth_year: '33BBY',
-  gender: 'n/a'
+  gender: 'n/a',
 },
 {
   name: 'Darth Vader',
@@ -56,7 +56,7 @@ let starWarsData = [{
   skin_color: 'white',
   eye_color: 'yellow',
   birth_year: '41.9BBY',
-  gender: 'male'
+  gender: 'male',
 },
 {
   name: 'Leia Organa',
@@ -66,12 +66,12 @@ let starWarsData = [{
   skin_color: 'light',
   eye_color: 'brown',
   birth_year: '19BBY',
-  gender: 'female'
+  gender: 'female',
 }];
 
 const returnNames = (arr) => {
   let name = arr.reduce((acc, value) => {
-    acc.push(value.name)
+    acc.push(value.name);
     return acc;
   },[]);
   return name;
@@ -86,7 +86,7 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (arr) => {
-  // Solution code here...
+  return arr.split('').reduce((rev, char) => char + rev, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -135,13 +135,19 @@ const characters = [
     name: 'Jon',
     spouse: null,
     house: 'Snow',
-  },
+  }
 ];
 
 const countNumberOfChildren = (arr) => {
-  // Solution code here...
+  return characters.reduce((a, e) => {
+    if(e.children) {
+      return e.children.length + a;
+    }
+    else {
+      return a;
+    }
+  },0);
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
@@ -208,7 +214,7 @@ const snorlaxData = {
       },
       effort: 9,
       baseStat: 65,
-    },
+    }
   ],
   name: 'snorlax',
   weight: 4600,
@@ -281,7 +287,7 @@ describe('Testing challenge 6', () => {
 
 describe('Testing challenge 7', () => {
   test('It should return any stats that match the input', () => {
-    expect(extractStat('speed', snorlaxData.stats)).toStrictEqual({ stat: { url: 'https://pokeapi.co/api/v2/stat/6/', name: 'speed' }, effort: 5, baseStat: 30 });
+    expect(extractStat('speed', snorlaxData.stats)).toStrictEqual({ stat: { url: 'https://pokeapi.co/api/v2/stat/6/', name: 'speed', }, effort: 5, baseStat: 30, });
   });
 });
 
