@@ -9,9 +9,10 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  return arr.reduce(acc => {
+    return acc +1;
+  },0);
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -69,7 +70,11 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let name = arr.reduce((acc, value) => {
+    acc.push(value.name)
+    return acc;
+  },[]);
+  return name;
 };
 
 /* ------------------------------------------------------------------------------------------------
