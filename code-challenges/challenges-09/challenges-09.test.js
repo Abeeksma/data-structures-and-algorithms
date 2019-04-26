@@ -139,15 +139,16 @@ const characters = [
 ];
 
 const countNumberOfChildren = (arr) => {
-  return characters.reduce((a, e) => {
+  return characters.reduce((acc, e) => {
     if(e.children) {
-      return e.children.length + a;
+      return e.children.length + acc;
     }
     else {
-      return a;
+      return acc;
     }
   },0);
 };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
@@ -157,7 +158,10 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
-  // Solution code here...
+  let totalAverage = arr.reduce((total, number) =>{
+    return (total += number);
+  });
+  return totalAverage / arr.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -178,8 +182,17 @@ const isPrime = (value) => {
 };
 
 const countPrimeNumbers = (arr) => {
-  // Solution code here...
+  let primeCount = arr.reduce((acc, val) => {
+    if(!isPrime(val)){
+      return acc;
+    }
+    else{
+      return acc + 1;
+    }
+  },0);
+  return primeCount;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
