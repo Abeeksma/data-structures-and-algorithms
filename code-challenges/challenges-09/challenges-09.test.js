@@ -9,9 +9,10 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
-  // Solution code here...
+  return arr.reduce(acc => {
+    return acc + 1;
+  },0);
 };
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -36,7 +37,7 @@ let starWarsData = [{
   skin_color: 'gold',
   eye_color: 'yellow',
   birth_year: '112BBY',
-  gender: 'n/a'},
+  gender: 'n/a',},
 {
   name: 'R2-D2',
   height: '96',
@@ -45,7 +46,7 @@ let starWarsData = [{
   skin_color: 'white, blue',
   eye_color: 'red',
   birth_year: '33BBY',
-  gender: 'n/a'
+  gender: 'n/a',
 },
 {
   name: 'Darth Vader',
@@ -55,7 +56,7 @@ let starWarsData = [{
   skin_color: 'white',
   eye_color: 'yellow',
   birth_year: '41.9BBY',
-  gender: 'male'
+  gender: 'male',
 },
 {
   name: 'Leia Organa',
@@ -65,11 +66,15 @@ let starWarsData = [{
   skin_color: 'light',
   eye_color: 'brown',
   birth_year: '19BBY',
-  gender: 'female'
+  gender: 'female',
 }];
 
 const returnNames = (arr) => {
-  // Solution code here...
+  let name = arr.reduce((acc, value) => {
+    acc.push(value.name);
+    return acc;
+  },[]);
+  return name;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -81,7 +86,7 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (arr) => {
-  // Solution code here...
+  return arr.split('').reduce((rev, char) => char + rev, '');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -130,11 +135,18 @@ const characters = [
     name: 'Jon',
     spouse: null,
     house: 'Snow',
-  },
+  }
 ];
 
 const countNumberOfChildren = (arr) => {
-  // Solution code here...
+  return characters.reduce((acc, e) => {
+    if(e.children) {
+      return e.children.length + acc;
+    }
+    else {
+      return acc;
+    }
+  },0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -146,7 +158,10 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
-  // Solution code here...
+  let totalAverage = arr.reduce((total, number) =>{
+    return (total += number);
+  });
+  return totalAverage / arr.length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -167,8 +182,17 @@ const isPrime = (value) => {
 };
 
 const countPrimeNumbers = (arr) => {
-  // Solution code here...
+  let primeCount = arr.reduce((acc, val) => {
+    if(!isPrime(val)){
+      return acc;
+    }
+    else{
+      return acc + 1;
+    }
+  },0);
+  return primeCount;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
@@ -203,14 +227,22 @@ const snorlaxData = {
       },
       effort: 9,
       baseStat: 65,
-    },
+    }
   ],
   name: 'snorlax',
   weight: 4600,
 };
 
 const extractStat = (statName, arr) => {
-  // Solution code here...
+  let thing = arr.reduce((acc, val) => {
+    if(val.stat.name === statName){
+      return val;
+    }
+    else {
+      return acc || null;
+    }
+  });
+  return thing;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -224,7 +256,18 @@ Write a function named extractChildren that, given the array of characters from 
 ------------------------------------------------------------------------------------------------ */
 
 const extractChildren = (arr) => {
-  // Solution code here...
+  let regPat = /[a]/i;
+  let filteredArray = arr.filter(item => {
+    return regPat.test(item.name);
+  });
+  return filteredArray.reduce((acc, val) => {
+    if(val.hasOwnProperty('children')) {
+      return acc.concat(val.children);
+    }
+    else {
+      return acc;
+    }
+  },[]);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -276,7 +319,7 @@ describe('Testing challenge 6', () => {
 
 describe('Testing challenge 7', () => {
   test('It should return any stats that match the input', () => {
-    expect(extractStat('speed', snorlaxData.stats)).toStrictEqual({ stat: { url: 'https://pokeapi.co/api/v2/stat/6/', name: 'speed' }, effort: 5, baseStat: 30 });
+    expect(extractStat('speed', snorlaxData.stats)).toStrictEqual({ stat: { url: 'https://pokeapi.co/api/v2/stat/6/', name: 'speed', }, effort: 5, baseStat: 30, });
   });
 });
 
