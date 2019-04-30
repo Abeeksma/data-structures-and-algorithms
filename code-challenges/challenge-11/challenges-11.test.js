@@ -30,8 +30,8 @@ Note: if you ever need to validate an email using a regex in practice, the Inter
 ------------------------------------------------------------------------------------------------ */
 
 const validateEmail = (email) => {
-  let pattern = /^[A-Z0-9]\.?[A-Z0-9]\@[A-Z0-9]\.(net|com|org)$/gi;
-  pattern.test(email);
+  let pattern = /^[a-z0-9]+\.?[a-z0-9]+@[a-z]+\.(com|org|net)$/i;
+  return pattern.test(email);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -54,10 +54,10 @@ Your function should include a single regular expression pattern that matches an
 
 Return either true or false.
 ------------------------------------------------------------------------------------------------ */
-
+ 
 const validatePhoneNumber = (phoneNumber) => {
-  let pattern = /(^\(?[0-9]{3}\)?\-?\s?[0-9]{3}\-?\s?[0-9]{4}[^-])/;
-  pattern.test(phoneNumber);
+  let pattern = /((^\((\d{3})\))|(^\d{3}))\D?(\d{3})\D?(\d{4})$/;
+  return pattern.test(phoneNumber);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -70,7 +70,8 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 ------------------------------------------------------------------------------------------------ */
 
 const findTagNames = elements => {
-  // Solution code here...
+  let pattern =
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
