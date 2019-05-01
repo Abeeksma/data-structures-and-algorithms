@@ -93,7 +93,17 @@ For example, ['Tuesday', 'Monday', 'Wednesday and Thursday', 'Tuesday 2', 'Thurs
 ------------------------------------------------------------------------------------------------ */
 const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 const sortByDay = (arr) => {
-  
+  let array = [];
+  daysOfWeek.forEach(day => {
+    let dayArray = []; 
+    arr.forEach(event => {
+      if (event.includes(day)) {
+        dayArray.push(event);
+      }
+    });
+    array.push(dayArray);
+  });
+  return array;
 };
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
@@ -101,7 +111,9 @@ Write a function named characterByIndex that takes in an array of strings and re
 For example, ['abcd', 'efgh', 'ijkl', 'mnop'] returns ['a', 'f', 'k', 'p']
 ------------------------------------------------------------------------------------------------ */
 const characterByIndex = (arr) => {
-  // Solution code here...
+  return arr.map((str, idx) => {
+    return str.charAt(idx);
+  });
 };
 /* ------------------------------------------------------------------------------------------------
 TESTS
