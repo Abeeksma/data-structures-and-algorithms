@@ -70,8 +70,9 @@ findTagNames(['<div><h1>Hello, world!</h1></div>', '<p>Welcome to my site</p>'])
 ------------------------------------------------------------------------------------------------ */
 
 const findTagNames = elements => {
-  let pattern =
-  
+  let pattern = /\/+[a-z0-9]/;
+  let endTagArray = elements.match(pattern);
+  return endTagArray;
 };
 
 /* ------------------------------------------------------------------------------------------------
