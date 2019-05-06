@@ -1,6 +1,6 @@
 'use strict';
 
-/* ------------------------------------------------------------------------------------------------
+/* ---------------------------------------hopefully this is right---------------------------------------------------------
 CHALLENGE 1
 
 Write a function named toTitleCase that takes in an array of strings and returns an array of strings with the first character in upper case and the rest as is.
@@ -9,7 +9,9 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  return arr.map(str => {
+    return str.charAt(0).toUpperCase() + str.substring(1);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -84,7 +86,16 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  return arr.filter(person => {
+    if(person.mass > 77) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+    .map(person => person.name)
+    .join()
+    .replace(',', ' - ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -102,7 +113,13 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  return arr.sort((a, b) => {
+    if (a[property] < b[property]) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -118,7 +135,7 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-// Solution code here...
+  return url.includes('https://');
 };
 
 /* ------------------------------------------------------------------------------------------------
