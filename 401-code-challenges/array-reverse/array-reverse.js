@@ -1,6 +1,8 @@
 'use strict'
 
-let array = [1, 2, 3, 4, 5, 6];
+//let array = [1, 2, 3, 4, 5, 6];
+//let array = [];
+//let array = 'not an array';
 
 function reverseArray(array) {
   if(!Array.isArray(array)){
@@ -19,16 +21,24 @@ function reverseArray(array) {
   }
 };
 
-console.log(reverseArray(array));
+//console.log(reverseArray(array));
 
 
 
 function anotherReverseArray (array) {
+  if (!Array.isArray(array)){
+    return 'cannot reverse that which is not an array with this array reversal function';
+  }
+  else if (array.length === 0){
+    return [];
+  }
+  else{
   let reversedArray = [];
   for(let i = array.length -1; i >= 0; i--) {
     reversedArray.push(array[i]);
   }
   return reversedArray;
+  }
 };
 
 console.log(anotherReverseArray(array));
