@@ -2,7 +2,7 @@
 
 //let array = [1, 2, 3, 4, 5, 6];
 //let array = [];
-//let array = 'not an array';
+let array = 'not an array';
 
 function reverseArray(array) {
   if(!Array.isArray(array)){
@@ -21,7 +21,7 @@ function reverseArray(array) {
   }
 };
 
-//console.log(reverseArray(array));
+console.log(reverseArray(array));
 
 
 
@@ -41,6 +41,16 @@ function anotherReverseArray (array) {
   }
 };
 
-console.log(anotherReverseArray(array));
+//console.log(anotherReverseArray(array));
 
 
+describe('input has to be array', () => {
+  it('not sure what goes here as i test don\'t make sense to me yet', () => {
+    const res = reverseArray('somthing not an array');
+    expect(res).toBe('cannot reverse an array if you don\'t give me an array')
+  });
+}); 
+
+// describe('empty array gets empty array')
+
+// describe('array is reversed')
