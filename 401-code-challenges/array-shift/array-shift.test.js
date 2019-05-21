@@ -28,12 +28,13 @@ function insertShiftArray(array, middleInsert){
   }
 };
 
+console.log(insertShiftArray(array4, middleInsert));
 
 
 describe('Array with value added to middle', () => {
- it('Is an array', () => {
-  const result = insertShiftArray(array3, middleInsert);
-  expect(result).toBe(null);
+ it('Is not an array', () => {
+  const result = insertShiftArray(array4, middleInsert);
+  expect(result).toBe(null)
  });
 });
 
