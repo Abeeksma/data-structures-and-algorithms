@@ -1,6 +1,6 @@
 'use strict'
 
-let array = [1, 2, 3, 4, 5, 6, 7, 8];
+let array = [1, 2, 3, 4, 5, 6];
 
 function reverseArray(array) {
   for (let i = 0; i <= Math.floor((array.length - 1)/2); i++) {
@@ -12,6 +12,8 @@ function reverseArray(array) {
 };
 
 console.log(reverseArray(array));
+
+//don't run them both in a row as the first returns the same array reversed and the second reverses the reverse
 
 function anotherReverseArray (array) {
   let reversedArray = [];
