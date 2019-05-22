@@ -1,19 +1,5 @@
 'use strict'
 
-let array = [1, 2, 3, 4, 5, 6];
-let array2 = [1, 2, 3, 4, 5];
-let array3 = [];
-let array4 = 'nonsense';
-let array5 = ['things', 'stuffs', 'mayhem', 'madness'];
-let array6 = ['one', 'fickle', 'donkey', 'hates', 'hay'];
-let array7 = [1, 'donkey', 2, 3, 'mania', 'sanity'];
-let array8 = ['donkey', 2, 'horse', 9, 8];
-
-let middleInsert = 4;
-let middleInsert2 = 'horse';
-let middleInsert3 = undefined;
-
-
 function insertShiftArray(array, middleInsert){
   if (!Array.isArray(array)){
     return 'I need an array to put something into'}
@@ -21,6 +7,8 @@ function insertShiftArray(array, middleInsert){
     return array;
   }
   else{
+    let middleFinger = Math.ceil(arr.length/2)
+    let insertedShiftedArray = []
     for(let i = 0; i < array.length; i++) {
 
     }
@@ -38,8 +26,3 @@ describe('Array with value added to middle', () => {
  });
 });
 
-
-/* change array in place 
-for each element at index array.length/2 and past incease index by one
-array[array.length/2 -1] = middleInsert?
-*/
