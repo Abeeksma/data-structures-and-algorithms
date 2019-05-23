@@ -48,6 +48,12 @@ describe('binary search', () => {
     let result = binarySearch([1], 1)
     expect(result).toEqual(0);
   });
+
+  it('should return -1 if array of 1 does not match key', () => {
+    let result = binarySearch([1], 9)
+    expect(result).toEqual(-1);
+  });
+
 });
 
 
