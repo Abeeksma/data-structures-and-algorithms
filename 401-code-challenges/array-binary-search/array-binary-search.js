@@ -4,16 +4,36 @@ function binarySearch(arr, key) {
   
   let start = 0;
   let end = arr.length -1; 
-  let middle =  Math.floor((start + end)/2);
+  let middle =  Math.floor((start + end) / 2);
   
-  while()
+  if(!Array.isArray(arr)){
+    return null;
+  }
+  else if(arr.length === 1) {
+    if(arr[0] === key){
+      return 0;
+    }
+    else {return -1};
+  }
+  else {
+    while(arr[middle] !== key && start < end) {
+      if( arr[middle] < key){
+        start = middle + 1;
+      }
+      else {
+        end = middle -1
+      }
+      let middle = Math.floor((start + end) / 2);  
+    }
+    if (arr[middle] === key){
+      return middle;
+    }
+    return -1
+    }
+  };
 
-};
 
-
-
-
-
+  
 describe('binary search', () => {
   it('should return index of the element that matches the key from an array', () => {
     let result = binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 8);
