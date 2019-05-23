@@ -1,7 +1,6 @@
 'use strict'
 
 function binarySearch(arr, key) {
-  
   let start = 0;
   let end = arr.length -1; 
   let middle =  Math.floor((start + end) / 2);
@@ -23,7 +22,7 @@ function binarySearch(arr, key) {
       else {
         end = middle -1
       }
-      let middle = Math.floor((start + end) / 2);  
+      middle = Math.floor((start + end) / 2);  
     }
     if (arr[middle] === key){
       return middle;
@@ -33,17 +32,22 @@ function binarySearch(arr, key) {
   };
 
 
-  
+
 describe('binary search', () => {
   it('should return index of the element that matches the key from an array', () => {
     let result = binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 8);
-    expect(result).toEqual(6);
+    expect(result).toEqual(7);
   });
+
   it('should return -1 if the key is not present in the array', () => {
     let result = binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 11);
     expect(result).toBe(-1)
   });
 
+  it('should return 0 if the array only has 1 number and that number matches the key', () => {
+    let result = binarySearch([1], 1)
+    expect(result).toEqual(0);
+  });
 });
 
 
