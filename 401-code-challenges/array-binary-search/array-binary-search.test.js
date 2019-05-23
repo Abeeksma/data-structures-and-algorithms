@@ -55,20 +55,50 @@ describe('binary search', () => {
     expect(result).toEqual(-1);
   });
 
-  it('should work with a very long array as well', () => {
+  it('should work with an array of 100', () => {
     let testArray = [];
     let fillArray = function(number){
       for(let i = 1; i < number; i ++){
         testArray.push(i);
       }
     }
-    fillArray(Math.ceil(Math.random()*1000));
-    console.log(fillArray);
+    fillArray(100);
     let result = binarySearch(testArray, 9);
     expect(result).toEqual(8);
   });
 
-});
+  it('should work with an array of 10000', () => {
+    let testArray = [];
+    let fillArray = function(number){
+      for(let i = 1; i < number; i ++){
+        testArray.push(i);
+      }
+    }
+    fillArray(10000);
+    let result = binarySearch(testArray, 9);
+    expect(result).toEqual(8);
+  });
+
+  it('should work with an array of 100000', () => {
+    let testArray = [];
+    let fillArray = function(number){
+      for(let i = 1; i < number; i ++){
+        testArray.push(i);
+      }
+    }
+    fillArray(100000);
+    let result = binarySearch(testArray, 9);
+    expect(result).toEqual(8);
+  });
+
+  it('should return null if there is no array to search ', () => {
+    let result = binarySearch('donkey', 3);
+    expect(result).toBeNull();
+  });
+
+ });
+
+
 
 
 
