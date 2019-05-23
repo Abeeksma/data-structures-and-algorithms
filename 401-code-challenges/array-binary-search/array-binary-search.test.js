@@ -1,5 +1,6 @@
 'use strict'
 
+
 function binarySearch(arr, key) {
   let start = 0;
   let end = arr.length -1; 
@@ -45,13 +46,26 @@ describe('binary search', () => {
   });
 
   it('should return 0 if the array only has 1 number and that number matches the key', () => {
-    let result = binarySearch([1], 1)
+    let result = binarySearch([1], 1);
     expect(result).toEqual(0);
   });
 
   it('should return -1 if array of 1 does not match key', () => {
-    let result = binarySearch([1], 9)
+    let result = binarySearch([1], 9);
     expect(result).toEqual(-1);
+  });
+
+  it('should work with a very long array as well', () => {
+    let testArray = [];
+    let fillArray = function(number){
+      for(let i = 1; i < number; i ++){
+        testArray.push(i);
+      }
+    }
+    fillArray(Math.ceil(Math.random()*1000));
+    console.log(fillArray);
+    let result = binarySearch(testArray, 9);
+    expect(result).toEqual(8);
   });
 
 });
