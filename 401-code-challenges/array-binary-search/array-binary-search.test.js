@@ -56,6 +56,15 @@ describe('binary search', () => {
   });
 
   it('should work with an array of 100', () => {
+    //set random testkey
+    let testKey;
+    function randomNumber(min, max) {
+      testKey = Math.floor(Math.random() * (max - min) + min);
+      console.log(testKey);
+    }
+    randomNumber(1, 100);
+
+    //set random testArray
     let testArray = [];
     let fillArray = function(number){
       for(let i = 1; i < number; i ++){
@@ -63,11 +72,21 @@ describe('binary search', () => {
       }
     }
     fillArray(100);
-    let result = binarySearch(testArray, 9);
-    expect(result).toEqual(8);
+
+    let result = binarySearch(testArray, testKey);
+    expect(result).toEqual(testKey -1);
   });
 
   it('should work with an array of 10000', () => {
+    //set random testkey
+    let testKey;
+    function randomNumber(min, max) {
+      testKey = Math.floor(Math.random() * (max - min) + min);
+      console.log(testKey);
+    }
+    randomNumber(1, 10000);
+
+    //set random testArray
     let testArray = [];
     let fillArray = function(number){
       for(let i = 1; i < number; i ++){
@@ -75,21 +94,32 @@ describe('binary search', () => {
       }
     }
     fillArray(10000);
-    let result = binarySearch(testArray, 9);
-    expect(result).toEqual(8);
+
+    let result = binarySearch(testArray, testKey);
+    expect(result).toEqual(testKey -1);
   });
 
   it('should work with an array of 100000', () => {
-    let testArray = [];
-    let fillArray = function(number){
-      for(let i = 1; i < number; i ++){
-        testArray.push(i);
-      }
-    }
-    fillArray(100000);
-    let result = binarySearch(testArray, 9);
-    expect(result).toEqual(8);
-  });
+ //set random testkey
+ let testKey;
+ function randomNumber(min, max) {
+   testKey = Math.floor(Math.random() * (max - min) + min);
+   console.log(testKey);
+ }
+ randomNumber(1, 100000);
+
+ //set random testArray
+ let testArray = [];
+ let fillArray = function(number){
+   for(let i = 1; i < number; i ++){
+     testArray.push(i);
+   }
+ }
+ fillArray(100000);
+
+ let result = binarySearch(testArray, testKey);
+ expect(result).toEqual(testKey -1);
+});
 
   it('should return null if there is no array to search ', () => {
     let result = binarySearch('donkey', 3);
@@ -97,6 +127,8 @@ describe('binary search', () => {
   });
 
  });
+
+
 
 
 
