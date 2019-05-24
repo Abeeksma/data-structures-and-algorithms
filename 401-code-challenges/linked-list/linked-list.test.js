@@ -1,7 +1,5 @@
 'use strict';
 
-// classes to build the pieces of the linked list
-
 class ListNode {
   constructor(data) {
     this.data = data;
@@ -21,7 +19,7 @@ class List {
       }
       else{
         let current = this.head;
-        while(current !== null){
+        while(current.next !== null){
           current = current.next;
         }
         current.next = listItem;
@@ -48,13 +46,10 @@ class List {
 };
 
 const list = new List();
-list.assignItem('node1');
-list.assignItem('node2')
-console.log(list);
 
-console.log(findItem('node1'))
-
-
-// describe('Linked List', () => {
-//   it()
-// });
+describe('Linked List', () => {
+  it('can instantiate an empty linked list', () =>{
+    let result = new List();
+    expect(result).toBeDefined();
+  })
+});
