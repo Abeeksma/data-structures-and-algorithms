@@ -12,7 +12,7 @@ class List {
   this.head = null;
   }
 
-  assignItem(data) {
+  appendItem(data) {
     const listItem = new ListNode(data);
     let current = this.head;
 
@@ -60,10 +60,28 @@ class List {
     }
   };
 
-  removeItem() {
+  removeItem(data) {
+    let current = this.head;
+    let previous = null;
+  };
+
+  insertItem(data) {
+    const listItem = new ListNode(data);
+    if (this.head === null) {
+      head = listItem;
+    }
+    else{}
+   
+  };
+
+  insertBefore(data) {
+    if(head === null)
 
   };
 
+  insertAfter(data) {
+
+  };
 };
 
 let emptyList;
@@ -75,12 +93,12 @@ describe('Linked List', () => {
   beforeEach(() =>{
     emptyList = new List();
     singleItemList = new List();
-    singleItemList.assignItem('node1');
+    singleItemList.appendItem('node1');
 
     multiItemList = new List();
-    multiItemList.assignItem('node1');
-    multiItemList.assignItem('node2');
-    multiItemList.assignItem('node3');
+    multiItemList.appendItem('node1');
+    multiItemList.appendItem('node2');
+    multiItemList.appendItem('node3');
 
   });
   it('can instantiate an empty linked list', () =>{
@@ -89,7 +107,7 @@ describe('Linked List', () => {
   });
 
   it('can properly insert a node into the empty linked list', () => {
-    let result = emptyList.assignItem('testNode');
+    let result = emptyList.appendItem('testNode');
     console.log(`emptyList insert ${JSON.stringify(result)}`);
     expect(result).toBeDefined();
     expect(result.head.data).toEqual('testNode');
@@ -97,7 +115,7 @@ describe('Linked List', () => {
   });
 
   it('can properly insert a node into the single item linked list', () => {
-    let result = singleItemList.assignItem('testNode');
+    let result = singleItemList.appendItem('testNode');
     console.log(`singleitem insert ${JSON.stringify(result)}`);
     expect(result).toBeDefined();
     expect(result.head.next.data).toEqual('testNode');
@@ -105,7 +123,7 @@ describe('Linked List', () => {
   });  
   
   it('can properly insert a node into the multi item linked list', () => {
-    let result = multiItemList.assignItem('testNode');
+    let result = multiItemList.appendItem('testNode');
     console.log(`emptyList insert ${JSON.stringify(result)}`);
     expect(result).toBeDefined();
     expect(result.head.next.next.next.data).toEqual('testNode');
@@ -126,5 +144,15 @@ describe('Linked List', () => {
     let result = multiItemList.printContents();
     console.log(`testPrint ${result}`);
     expect(result).toEqual('node1, node2, node3');
+  });
+
+  it('inserts a new node at the begining of an empty list', () => {
+    let result = emptyList.appendItem('testNode');
+    expect(result.head.data).toEqual('testNode');
+    expect(result.head.next).toEqual(null);
+  });
+
+  it('inserts a new node at the begining of a list with a single item', () => {
+    let result = singleItemList.appendItem('testNode');
   });
 });
