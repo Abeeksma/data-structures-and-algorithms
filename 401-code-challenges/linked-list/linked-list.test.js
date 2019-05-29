@@ -61,21 +61,35 @@ class List {
   };
 
   removeItem(data) {
-    let current = this.head;
-    let previous = null;
+    if(this.head.data === data) {
+      this.head = this.head.next;
+    }
+    else{
+      let previous = this.head;
+      let current = previous.next;
+      while(current){
+        if(current.data = data){
+          previous.next = current.next
+          current = current.next;
+          break;
+        }
+        else {
+          previous = current;
+          current -current.next;
+        }
+      }
+    }
   };
 
   insertItem(data) {
-    const listItem = new ListNode(data);
-    if (this.head === null) {
-      head = listItem;
+    let listItem = new ListNode(data);
+    if(this.head){
+      listItem.next = this.head;
     }
-    else{}
-   
+      this.head = listItem;
   };
 
   insertBefore(data) {
-    if(head === null)
 
   };
 
@@ -152,7 +166,8 @@ describe('Linked List', () => {
     expect(result.head.next).toEqual(null);
   });
 
-  it('inserts a new node at the begining of a list with a single item', () => {
-    let result = singleItemList.appendItem('testNode');
+  it('deletes a node at a given value', () => {
+
   });
+  
 });
