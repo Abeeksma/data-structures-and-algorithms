@@ -47,6 +47,7 @@ class List {
 
   printContents() {
     let contents = '';
+
     if(this.head === null){
       return contents;
     }
@@ -64,10 +65,10 @@ class List {
     if(this.head.data === data) {
       this.head = this.head.next;
     }
-    else{
+    else {
       let previous = this.head;
       let current = previous.next;
-      while(current){
+      while(current) {
         if(current.data = data){
           previous.next = current.next
           current = current.next;
@@ -83,18 +84,49 @@ class List {
 
   insertItem(data) {
     let listItem = new ListNode(data);
-    if(this.head){
+
+    if(this.head) {
       listItem.next = this.head;
     }
       this.head = listItem;
   };
 
   insertBefore(data) {
+    let current = this.head;
+    let listItem = new ListNode(data);
 
+    while(current !== null) {
+      if(current.next.data !== data && current.data !== data) {
+        current = current.Next;
+      }
+      else if(current.next.data === data) {
+        listItem.next = current.next;
+        current.next = listItem;
+      }
+      else if(data === this.head.data) {
+        listItem.next = this.head;
+        this.head = listItem;
+      }
+      else {
+        throw (`no data to insert before`);
+      }
+    }
   };
 
   insertAfter(data) {
-
+    let current = this.head;
+    let listItem = new ListNode(data);
+    
+    while(current !== null) {
+      if(current.data === data) {
+        listItem.next = current.next;
+        current.next = listItem;
+      }
+      else {
+        current = current.next;
+      }
+    }
+    throw('no data to insert after');
   };
 };
 
