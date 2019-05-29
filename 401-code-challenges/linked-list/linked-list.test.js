@@ -10,6 +10,7 @@ class ListNode {
 class List {
   constructor() {
   this.head = null;
+  this.length = 0;
   }
 
   appendItem(data) {
@@ -18,6 +19,7 @@ class List {
 
     if(this.head === null) {
       this.head = listItem;
+      this.length++;
     }
     else{
       while(current.next !== null){
@@ -25,6 +27,7 @@ class List {
         current = current.next;
       }
       current.next = listItem;
+      this.length++;
     }
     return this;    
   }
@@ -64,6 +67,7 @@ class List {
   removeItem(data) {
     if(this.head.data === data) {
       this.head = this.head.next;
+      this.length--;
     }
     else {
       let previous = this.head;
@@ -72,11 +76,13 @@ class List {
         if(current.data = data){
           previous.next = current.next
           current = current.next;
+          this.length--;
           break;
         }
         else {
           previous = current;
-          current -current.next;
+          current = current.next;
+          this.length--;
         }
       }
     }
@@ -89,6 +95,7 @@ class List {
       listItem.next = this.head;
     }
       this.head = listItem;
+      length++;
   };
 
   insertBefore(data) {
@@ -102,10 +109,12 @@ class List {
       else if(current.next.data === data) {
         listItem.next = current.next;
         current.next = listItem;
+        this.length++;
       }
       else if(data === this.head.data) {
         listItem.next = this.head;
         this.head = listItem;
+        this.length ++;
       }
       else {
         throw (`no data to insert before`);
@@ -121,18 +130,48 @@ class List {
       if(current.data === data) {
         listItem.next = current.next;
         current.next = listItem;
+        this.length ++;
       }
       else {
         current = current.next;
+        this.length++;
       }
     }
     throw('no data to insert after');
   };
+
+  // TODO: remove all the lengths and do it differently
+  kFromEnd(k) { 
+    if (k > this.length || k < 0) {
+      return null
+    }
+    else {
+         let current = this.head;
+    for(let i = 1; i < Math.floor(this.length-k); i++){
+      current = current.next;
+      //current.next = current;
+    }
+    return current.data;
+    }
+  };
+
+  findMiddle() {
+    let current = this.head;
+    if(this.length < 1) {
+      return null;
+    }
+    for(let i = 1; i < Math.ceil(this.length/2); i++) {
+      current = current.next
+    }
+    return current.data;
+  };
+
 };
 
 let emptyList;
 let singleItemList;
 let multiItemList;
+let fatHappyList;
 
 describe('Linked List', () => {
   // sets new lists before each test
@@ -146,15 +185,23 @@ describe('Linked List', () => {
     multiItemList.appendItem('node2');
     multiItemList.appendItem('node3');
 
+    fatHappyList = new List();
+    fatHappyList.appendItem('node1');
+    fatHappyList.appendItem('node2');
+    fatHappyList.appendItem('node3');
+    fatHappyList.appendItem('node4');
+    fatHappyList.appendItem('node5');
+    console.log(`this is the fat list ${fatHappyList.printContents()} it has ${fatHappyList.length} things`);
+
   });
   it('can instantiate an empty linked list', () =>{
-    console.log(`emptyList: ${JSON.stringify(emptyList)}`);
+    //console.log(`emptyList: ${JSON.stringify(emptyList)}`);
     expect(emptyList).toBeDefined();
   });
 
   it('can properly insert a node into the empty linked list', () => {
     let result = emptyList.appendItem('testNode');
-    console.log(`emptyList insert ${JSON.stringify(result)}`);
+    //console.log(`emptyList insert ${JSON.stringify(result)}`);
     expect(result).toBeDefined();
     expect(result.head.data).toEqual('testNode');
     expect(result.head.next).toBe(null);
@@ -162,7 +209,7 @@ describe('Linked List', () => {
 
   it('can properly insert a node into the single item linked list', () => {
     let result = singleItemList.appendItem('testNode');
-    console.log(`singleitem insert ${JSON.stringify(result)}`);
+    //console.log(`singleitem insert ${JSON.stringify(result)}`);
     expect(result).toBeDefined();
     expect(result.head.next.data).toEqual('testNode');
     expect(result.head.next.next).toBe(null);
@@ -170,7 +217,7 @@ describe('Linked List', () => {
   
   it('can properly insert a node into the multi item linked list', () => {
     let result = multiItemList.appendItem('testNode');
-    console.log(`emptyList insert ${JSON.stringify(result)}`);
+    //console.log(`emptyList insert ${JSON.stringify(result)}`);
     expect(result).toBeDefined();
     expect(result.head.next.next.next.data).toEqual('testNode');
     expect(result.head.next.next.next.next).toBe(null);
@@ -188,7 +235,7 @@ describe('Linked List', () => {
 
   it('returns the contents of the linked list', () => {
     let result = multiItemList.printContents();
-    console.log(`testPrint ${result}`);
+    //console.log(`testPrint ${result}`);
     expect(result).toEqual('node1, node2, node3');
   });
 
@@ -202,4 +249,35 @@ describe('Linked List', () => {
 
   });
   
+  it('find the kth element from the end of a linked list with at least k element', () => {
+    let result = fatHappyList.kFromEnd(2);
+    //console.log(`k from end is ${result}`);
+    expect(result).toEqual('node3');
+  });
+
+  it('find the kth element from the end of linked list where k is 0', () => {
+    let result = fatHappyList.kFromEnd(0);
+    expect(result).toEqual('node5');
+  });
+
+  it('returns null is k is greater than list length', () => {
+    let result = fatHappyList.kFromEnd(6);
+    expect(result).toBe(null);
+  });
+
+  it('returns null is k is a negative number', () => {
+    let result = fatHappyList.kFromEnd(-1);
+    expect(result).toBe(null);
+  });
+
+  it('returns the middle node from a list', () => {
+    let result = fatHappyList.findMiddle();
+    expect(result).toEqual('node3');
+  });
+
+  it('returns null if the list is empty', () => {
+    let result = emptyList.findMiddle();
+    expect(result).toBe(null);
+  });
 });
+
