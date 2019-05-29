@@ -12,7 +12,7 @@ class List {
   this.head = null;
   }
 
-  assignItem(data) {
+  appendItem(data) {
     const listItem = new ListNode(data);
     let current = this.head;
 
@@ -47,6 +47,7 @@ class List {
 
   printContents() {
     let contents = '';
+
     if(this.head === null){
       return contents;
     }
@@ -60,10 +61,73 @@ class List {
     }
   };
 
-  removeItem() {
-
+  removeItem(data) {
+    if(this.head.data === data) {
+      this.head = this.head.next;
+    }
+    else {
+      let previous = this.head;
+      let current = previous.next;
+      while(current) {
+        if(current.data = data){
+          previous.next = current.next
+          current = current.next;
+          break;
+        }
+        else {
+          previous = current;
+          current -current.next;
+        }
+      }
+    }
   };
 
+  insertItem(data) {
+    let listItem = new ListNode(data);
+
+    if(this.head) {
+      listItem.next = this.head;
+    }
+      this.head = listItem;
+  };
+
+  insertBefore(data) {
+    let current = this.head;
+    let listItem = new ListNode(data);
+
+    while(current !== null) {
+      if(current.next.data !== data && current.data !== data) {
+        current = current.Next;
+      }
+      else if(current.next.data === data) {
+        listItem.next = current.next;
+        current.next = listItem;
+      }
+      else if(data === this.head.data) {
+        listItem.next = this.head;
+        this.head = listItem;
+      }
+      else {
+        throw (`no data to insert before`);
+      }
+    }
+  };
+
+  insertAfter(data) {
+    let current = this.head;
+    let listItem = new ListNode(data);
+    
+    while(current !== null) {
+      if(current.data === data) {
+        listItem.next = current.next;
+        current.next = listItem;
+      }
+      else {
+        current = current.next;
+      }
+    }
+    throw('no data to insert after');
+  };
 };
 
 let emptyList;
@@ -75,12 +139,12 @@ describe('Linked List', () => {
   beforeEach(() =>{
     emptyList = new List();
     singleItemList = new List();
-    singleItemList.assignItem('node1');
+    singleItemList.appendItem('node1');
 
     multiItemList = new List();
-    multiItemList.assignItem('node1');
-    multiItemList.assignItem('node2');
-    multiItemList.assignItem('node3');
+    multiItemList.appendItem('node1');
+    multiItemList.appendItem('node2');
+    multiItemList.appendItem('node3');
 
   });
   it('can instantiate an empty linked list', () =>{
@@ -89,7 +153,7 @@ describe('Linked List', () => {
   });
 
   it('can properly insert a node into the empty linked list', () => {
-    let result = emptyList.assignItem('testNode');
+    let result = emptyList.appendItem('testNode');
     console.log(`emptyList insert ${JSON.stringify(result)}`);
     expect(result).toBeDefined();
     expect(result.head.data).toEqual('testNode');
@@ -97,7 +161,7 @@ describe('Linked List', () => {
   });
 
   it('can properly insert a node into the single item linked list', () => {
-    let result = singleItemList.assignItem('testNode');
+    let result = singleItemList.appendItem('testNode');
     console.log(`singleitem insert ${JSON.stringify(result)}`);
     expect(result).toBeDefined();
     expect(result.head.next.data).toEqual('testNode');
@@ -105,7 +169,7 @@ describe('Linked List', () => {
   });  
   
   it('can properly insert a node into the multi item linked list', () => {
-    let result = multiItemList.assignItem('testNode');
+    let result = multiItemList.appendItem('testNode');
     console.log(`emptyList insert ${JSON.stringify(result)}`);
     expect(result).toBeDefined();
     expect(result.head.next.next.next.data).toEqual('testNode');
@@ -127,4 +191,15 @@ describe('Linked List', () => {
     console.log(`testPrint ${result}`);
     expect(result).toEqual('node1, node2, node3');
   });
+
+  it('inserts a new node at the begining of an empty list', () => {
+    let result = emptyList.appendItem('testNode');
+    expect(result.head.data).toEqual('testNode');
+    expect(result.head.next).toEqual(null);
+  });
+
+  it('deletes a node at a given value', () => {
+
+  });
+  
 });
