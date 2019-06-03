@@ -1,5 +1,7 @@
 'use strict';
 
+import { isModuleDeclaration } from "@babel/types";
+
 class Node {
   constructor(data) {
     this.data = data;
@@ -30,22 +32,27 @@ class Stack {
     this.size --;
     return popped; 
   }
+
+  peek(){
+
+  }
+  
 }
 
 class Queue {
   constructor() {
-    this.first = null;
+    this.front = null;
     this.size = 0;
   }
 
   enqueue(data){
     let node = new Node (data);
 
-    if(!this.first) {
-      this.first = node
+    if(!this.front) {
+      this.front = node
     }
     else {
-      firstNode = this.first
+      firstNode = this.front
       while(firstNode.next){
         firstNode = firstNode.next;
       }
@@ -56,10 +63,21 @@ class Queue {
   }
 
   dequeue(){
-    leavingQueue = this.first
-    this.first = this.first.next;
+    leavingQueue = this.front
+    this.front = this.front.next;
     this.size --;
     return leavingQueue;
   }
+
+  peek(){
+
+  }
+
 }
+
+
+
+
+
+module.exports = Node, Stack, Queue; 
 
