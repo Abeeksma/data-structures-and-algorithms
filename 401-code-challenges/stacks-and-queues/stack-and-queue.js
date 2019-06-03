@@ -25,10 +25,10 @@ class Stack {
   }
 
   pop(){
-    temp = this.top ;
+    popped = this.top ;
     this.top = this.top.previous;
     this.size --;
-    return temp; 
+    return popped; 
   }
 }
 
@@ -36,6 +36,30 @@ class Queue {
   constructor() {
     this.first = null;
     this.size = 0;
+  }
+
+  enqueue(data){
+    let node = new Node (data);
+
+    if(!this.first) {
+      this.first = node
+    }
+    else {
+      firstNode = this.first
+      while(firstNode.next){
+        firstNode = firstNode.next;
+      }
+      firstNode.next = node;
+    }
+    this.size ++;
+    return node;
+  }
+
+  dequeue(){
+    leavingQueue = this.first
+    this.first = this.first.next;
+    this.size --;
+    return leavingQueue;
   }
 }
 
