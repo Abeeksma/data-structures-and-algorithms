@@ -1,7 +1,5 @@
 'use strict';
 
-import { isModuleDeclaration } from "@babel/types";
-
 class Node {
   constructor(data) {
     this.data = data;
@@ -76,8 +74,14 @@ class Queue {
 }
 
 
-
-
-
 module.exports = Node, Stack, Queue; 
 
+
+describe('The stack', () => {
+  it('can create an empty stack', () =>{
+    let result = new Stack();
+    
+    expect(result).toBeDefined();
+
+  });
+});
