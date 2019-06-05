@@ -32,7 +32,10 @@ class Stack {
   }
 
   peek(){
-
+    if(!this.stack){
+      return 'Empty Stack'
+    }
+    return this.stack.top
   }
   
 }
@@ -68,7 +71,10 @@ class Queue {
   }
 
   peek(){
-
+    if(!this.queue) {
+      return 'Queue is empty'
+    }
+    return this.queue.front
   }
 
 }
@@ -76,18 +82,39 @@ class Queue {
 
 module.exports = Node, Stack, Queue; 
 
+let emptyStack;
+let oneItemStack;
+let multiItemStack;
 
 describe('The stack', () => {
+  //setting stack for testing
+  beforeEach(() => {
+
+    emptyStack = new Stack();
+
+    oneItemStack = new Stack();
+    oneItemStack.push('node1');
+
+    multiItemStack = new Stack();
+    multiItemStack.push('node1');
+    multiItemStack.push('node2');
+    multiItemStack.push('node3');
+
+  });
+
   it('can create an empty stack', () =>{
-    let result = new Stack();
-    
-    expect(result).toBeDefined();
-    expect(result.top).toBeNull();
-    expect(result.size).toBe(0);
+    expect(emptyStack).toBeDefined();
+    expect(emptyStack.top).toBeNull();
+    expect(emptyStack.size).toBe(0);
   });
 
   it('can add a node to the top of the stack', () => {
-    let result = new Stack(); 
-    
+    expect(emptyStack.push('node1')).toBeDefined();
+    expect(emptyStack.top.data).toBe('node1') 
+  });
+
+  it('can add a node to a stack with nodes in it', () => {
+    expect(oneItemStack.push('node2')).toBeDefined();
+    expect(oneItemStack.top.data).toBe('node2');
   });
 });
