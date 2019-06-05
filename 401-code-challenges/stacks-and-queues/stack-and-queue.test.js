@@ -84,6 +84,10 @@ describe('The stack', () => {
     expect(result).toBeDefined();
     expect(result.top).toBeNull();
     expect(result.size).toBe(0);
+  });
+
+  it('can add a node to the top of the stack', () => {
+    let result = new Stack(); 
     
   });
 });
