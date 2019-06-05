@@ -35,7 +35,7 @@ class Stack {
     if(!this.stack){
       return 'Empty Stack'
     }
-    return this.stack.top
+    return this.stack.top.data
   }
   
 }
@@ -74,7 +74,7 @@ class Queue {
     if(!this.queue) {
       return 'Queue is empty'
     }
-    return this.queue.front
+    return this.queue.front.data
   }
 
 }
@@ -117,4 +117,16 @@ describe('The stack', () => {
     expect(oneItemStack.push('node2')).toBeDefined();
     expect(oneItemStack.top.data).toBe('node2');
   });
+
+  it('can properly add a node to the top of a multi Item stack', () => {
+    expect(multiItemStack.push('node4')).toBeDefined();
+    console.log(multiItemStack);
+    expect(multiItemStack.top.data).toBe('node4');
+  });
+
+  it('can peek at the top of the stack and return the top value', () => {
+    expect(multiItemStack.peek()).toEqual('node3')
+    console.log(multiItemStack.peek());
+  });
 });
+
