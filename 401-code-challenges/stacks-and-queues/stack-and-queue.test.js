@@ -82,6 +82,8 @@ describe('The stack', () => {
     let result = new Stack();
     
     expect(result).toBeDefined();
-
+    expect(result.top).toBeNull();
+    expect(result.size).toBe(0);
+    
   });
 });
