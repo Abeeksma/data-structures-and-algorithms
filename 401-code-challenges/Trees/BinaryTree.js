@@ -11,5 +11,17 @@ class BinaryTree {
   constructor() {
     this.root = null;
   }
-  
+
+  preOrder() {
+    
+  }
+
+  inOrder() {
+
+  }
+
+  postOrder() {
+
+  }
+
 }
