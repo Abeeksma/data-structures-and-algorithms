@@ -76,7 +76,24 @@ let openingBrackets = ['(', '[', '{'];
 let closingBrackets = [')', ']', '}'];
 
 bracketRacket = function(array){
+  //split up the input so i can mess with it
   const splitArray = array.split('');
+  
+  let brackArr = [];
+  let stack = new Stack();
 
+  //filter out my brackets into a workspace
+  splitArray.forEach(char => {
+    if(char === '(' || char === '[' || char === '{' || char === ')' || char === ']' || char === '}'){
+      brackArr.push(char);
+    }
+    else {return char}
+  });
 
+  for(let i = 0; i < splitArray.length -1; i++){
+  
+  }
 }
+
+
+
