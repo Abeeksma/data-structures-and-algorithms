@@ -1,6 +1,19 @@
 'use strict';
 
-'use strict';
+/*
+
+  traverse the tree [tree.inOrder()?]
+  check if current node.value is divible by 3, 5, or both
+  if divisible by 3 replace node.value with 'Fizz'
+  if divisible by 5 replace node.value with 'buzz'
+  if divisible by both replace node.value with 'Fizzbuzz'
+  if not divisible by 3 or 5 do nothing
+
+*/
+
+let Fizzbuzz = function(tree) {
+
+}
 
 class Node {
   constructor(value){
@@ -19,8 +32,7 @@ class BinaryTree {
     preOrderVisit(this.root);
     return result;
 
-    //helper to use! making it recursive
-    function preOrderVisit(node) {
+      function preOrderVisit(node) {
       if(!node){
         return
       }
@@ -62,4 +74,5 @@ class BinaryTree {
 
 };
 
-module.exports = FizzTree
+module.exports = BinaryTree, Fizzbuzz;
+BinaryTree.node = Node; 
