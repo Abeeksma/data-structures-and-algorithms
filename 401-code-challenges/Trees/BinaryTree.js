@@ -1,7 +1,5 @@
 'use strict';
 
-import { isModuleDeclaration } from "@babel/types";
-
 class Node {
   constructor(value){
     this.value = value;
@@ -25,7 +23,6 @@ class BinaryTree {
         return
       }
       result.push(node.value);
-
       preOrderVisit(node.left);
       preOrderVisit(node.right);
     };
@@ -35,12 +32,14 @@ class BinaryTree {
     var result = [];
     inOrderVisit(this.root)
     return result;
-
-      }  
+ 
       function inOrderVisit(node){
-      if(!node){
-        return
+        if(!node) {
+          return
       }
+        inOrderVisit(node.left);
+        result.push(node.value);
+        inOrderVisit(node.right);
     };
   }
 
@@ -49,6 +48,14 @@ class BinaryTree {
     postOrder(this.root)
     return result;
 
+      function postOrderVisit(node) {
+        if(!node) {
+          return
+      }
+        postOrderVisit(node.left);
+        postOrderVisit(node.right);
+        result.push(node.value);
+    };
   }
 
 };
