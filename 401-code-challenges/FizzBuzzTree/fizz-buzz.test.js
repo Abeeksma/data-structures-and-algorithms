@@ -22,11 +22,11 @@ describe('fizzbuzz tree', () => {
     let tree = testTree();
   });
 
-  it('will replace values with Fizzbuzz for values divisible by both 3 and 5')
+  it('will replace values with Fizzbuzz for values divisible by both 3 and 5', () => {
     let tree = testTree();
+  });
+    
 });
-
-
 
 
 function testTree() {
