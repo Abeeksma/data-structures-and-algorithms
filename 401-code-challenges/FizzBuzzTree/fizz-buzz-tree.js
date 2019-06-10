@@ -1,18 +1,27 @@
 'use strict';
 
 /*
-
   traverse the tree [tree.inOrder()?]
   check if current node.value is divible by 3, 5, or both
   if divisible by 3 replace node.value with 'Fizz'
   if divisible by 5 replace node.value with 'buzz'
   if divisible by both replace node.value with 'Fizzbuzz'
   if not divisible by 3 or 5 do nothing
-
 */
 
-let Fizzbuzz = function(tree) {
-
+let fizzBuzz = function(tree) {
+  if(!node){
+    return null;
+  }
+  else if(node.value % 3 === 0 && node.value % 5 === 0) {
+    node.value = 'Fizzbuzz';
+  }
+  else if (node.value % 5 === 0) {
+    node.value = 'buzz';
+  }
+  else if (node.value % 3 === 0) {
+    node.value = 'Fizz';
+  }
 }
 
 class Node {
@@ -74,5 +83,5 @@ class BinaryTree {
 
 };
 
-module.exports = BinaryTree, Fizzbuzz;
+module.exports = BinaryTree, fizzBuzz;
 BinaryTree.node = Node; 
