@@ -2,7 +2,13 @@
 
 const BinarySearchTree = require('./BinarySearchTree');
 
+describe('BinarySearchTree', () => {
+  it('can add new nodes', () => {
+    let testTree = new BinarySearchTree ();
 
+    expect(testTree.add(8))
+  });
+});
 
 function testTree() {
 
