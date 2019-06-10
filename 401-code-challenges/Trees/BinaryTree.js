@@ -45,7 +45,7 @@ class BinaryTree {
 
   postOrder() {
     var result = [];
-    postOrder(this.root)
+    postOrderVisit(this.root)
     return result;
 
       function postOrderVisit(node) {

@@ -3,10 +3,22 @@
 const BinaryTree = require('./BinaryTree');
 
 describe('Binary Tree', () => {
-  it('can traverse the data tree using preOder', () =>{
+  it('can traverse the data tree using preOder', () => {
     var tree = testTree();
 
     expect(tree.preOrder()).toEqual(['a', 'b', 'd', 'e', 'c', 'f']);
+  });
+
+  it('can traverse the data tree using inOrder', () => {
+    var tree = testTree();
+
+    expect(tree.inOrder()).toEqual(['d', 'b', 'e', 'a', 'f', 'c']);
+  });
+
+  it('can traverse the dat tree using postOrder', () => {
+    var tree = testTree();
+
+    expect(tree.postOrder()).toEqual(['d', 'e', 'b', 'f', 'c', 'a']);
   });
 });
 
