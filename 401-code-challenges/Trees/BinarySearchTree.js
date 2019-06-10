@@ -39,10 +39,10 @@ class BinarySearchTree extends BinaryTree {
       return null
     }
     else if (data < node.data) {
-      return this.search(node.left, data);
+      return this.contains(node.left, data);
     }
     else if (data > node.data) {
-      return this.search(node.right, data);
+      return this.contains(node.right, data);
     }
     else {
       return node;
