@@ -58,6 +58,10 @@ class BinaryTree {
     };
   }
 
+  breadthFirst(){
+    
+  }
+
 };
 
 module.exports = BinaryTree;
