@@ -79,7 +79,6 @@ class Queue {
 
 }
 
-
 module.exports = Node, Stack, Queue; 
 
 let emptyStack;
