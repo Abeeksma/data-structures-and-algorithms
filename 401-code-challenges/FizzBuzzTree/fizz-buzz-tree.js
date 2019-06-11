@@ -10,17 +10,23 @@
 */
 
 let fizzBuzz = function(tree) {
-  if(!node){
-    return null;
+  fizzbuzzSearch(this.root);
+   
+  function fizzbuzzSearch(node){  
+    if(!node){
+      return null;
+    }
+    else if(node.value % 3 === 0 && node.value % 5 === 0) {
+      node.value = 'Fizzbuzz';
+    }
+    else if (node.value % 5 === 0) {
+      node.value = 'buzz';
+    }
+    else if (node.value % 3 === 0) {
+      node.value = 'Fizz';
   }
-  else if(node.value % 3 === 0 && node.value % 5 === 0) {
-    node.value = 'Fizzbuzz';
-  }
-  else if (node.value % 5 === 0) {
-    node.value = 'buzz';
-  }
-  else if (node.value % 3 === 0) {
-    node.value = 'Fizz';
+  fizzbuzzSearch(node.left);
+  fizzbuzzSearch(node.right);
   }
 }
 
