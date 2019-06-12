@@ -83,7 +83,6 @@ class BinaryTree {
       if (current.right !==null){
         q.enqueue(current.right);
       }
-
       visitNodes();
     }
   }
