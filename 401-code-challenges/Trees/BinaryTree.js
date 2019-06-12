@@ -59,14 +59,14 @@ class BinaryTree {
   }
 
   maxValue() {
-    let max = 0; 
-    
+    let max = null; 
+  
     maxValueVisit(this.root);
     return max
 
       function maxValueVisit(node) {
         if(!node) {
-          return
+          return;
         }
         if(node.value > max){
           max = node.value;
