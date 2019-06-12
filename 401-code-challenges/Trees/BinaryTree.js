@@ -69,7 +69,7 @@ class BinaryTree {
           return;
         }
         if(node.value > max){
-          max = node.value;
+          max = parseInt(node.value);
         }
         maxValueVisit(node.left);
         maxValueVisit(node.right);
