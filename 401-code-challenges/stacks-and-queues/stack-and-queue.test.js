@@ -53,7 +53,7 @@ class Queue {
       this.front = node
     }
     else {
-      firstNode = this.front
+      let firstNode = this.front
       while(firstNode.next){
         firstNode = firstNode.next;
       }
@@ -64,10 +64,10 @@ class Queue {
   }
 
   dequeue(){
-    leavingQueue = this.front
+    let leavingQueue = this.front
     this.front = this.front.next;
     this.size --;
-    return leavingQueue;
+    return leavingQueue.data;
   }
 
   peek(){
@@ -79,7 +79,7 @@ class Queue {
 
 }
 
-module.exports = Node, Stack, Queue; 
+module.exports = { Node, Stack, Queue }; 
 
 
 
@@ -128,5 +128,21 @@ describe('The stack', () => {
   it.skip('can peek at the top of the stack and return the top value', () => {
     expect(multiItemStack.peek()).toEqual('node3')
     console.log(multiItemStack.peek());
+  });
+});
+
+describe('Queue', () => {
+  it('can enqueue and dequeue', () => {
+    var q = new Queue();
+
+    expect(q.front).toBe(null);
+
+    q.enqueue(1);
+    q.enqueue(2);
+
+    expect(q.dequeue()).toBe(1);
+    expect(q.dequeue()).toBe(2);
+
+    expect(q.front).toBe(null);
   });
 });
