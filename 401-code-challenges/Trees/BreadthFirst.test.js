@@ -3,6 +3,11 @@
 const BinaryTree = require('./BinaryTree');
 
 describe('Breadth First Traversal', () => {
+  it('it returns empty array for empty tree', () => {
+    let tree = new BinaryTree();
+    expect(tree.breadthFirst()).toEqual([]);
+  });
+
   it('it returns and array of values breadth first', () => {
     let tree = testTree();
     expect(tree.breadthFirst()).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);
