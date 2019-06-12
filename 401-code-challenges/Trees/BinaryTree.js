@@ -1,5 +1,8 @@
 'use strict';
 
+const Queue = require('../stacks-and-queues/stack-and-queue.test');
+const queueNode = require('../stacks-and-queues/stack-and-queue.test');
+
 class Node {
   constructor(value){
     this.value = value;
@@ -17,7 +20,6 @@ class BinaryTree {
     preOrderVisit(this.root);
     return result;
 
-    //helper to use! making it recursive
     function preOrderVisit(node) {
       if(!node){
         return
@@ -58,8 +60,27 @@ class BinaryTree {
     };
   }
 
-  breadthFirst(){
-    
+  breadthFirst() {
+    let q = new Queue();
+    let breadthFirstArray = [];
+    q.enqueue(this.root);
+    visitNodes(q);
+    return breadthFirstArray;
+
+    function visitNodes(){
+      if(q.front === null){
+       return
+      }
+      let current = q.dequeue()
+      breadthFirstArray.push(current)
+      
+      if (current.left !== null) {
+        q.enqueue(current.left);
+      }
+      if (current.right !==null){
+        q.enqueue(current.right);
+      }
+    }
   }
 
 };

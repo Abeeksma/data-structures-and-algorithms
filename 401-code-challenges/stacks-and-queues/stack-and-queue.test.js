@@ -46,7 +46,7 @@ class Queue {
     this.size = 0;
   }
 
-  enqueue(data){
+  enqueue(data) {
     let node = new Node (data);
 
     if(!this.front) {
@@ -80,6 +80,9 @@ class Queue {
 }
 
 module.exports = Node, Stack, Queue; 
+
+
+
 
 let emptyStack;
 let oneItemStack;
@@ -128,4 +131,3 @@ describe('The stack', () => {
     console.log(multiItemStack.peek());
   });
 });
-
