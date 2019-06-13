@@ -53,7 +53,7 @@ class Queue {
       this.front = node
     }
     else {
-      firstNode = this.front
+      let firstNode = this.front
       while(firstNode.next){
         firstNode = firstNode.next;
       }
@@ -79,7 +79,7 @@ class Queue {
 
 }
 
-module.exports = Node, Stack, Queue; 
+module.exports = {Node, Stack, Queue}; 
 
 let emptyStack;
 let oneItemStack;
