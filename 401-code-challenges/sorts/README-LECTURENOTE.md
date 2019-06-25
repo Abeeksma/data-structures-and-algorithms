@@ -16,7 +16,7 @@
   - The array is searched sequentially and unsorted items are moved and sorted into the sorted sub list!
 
   - We take an unsorted array [2, 5, 3, 1, 4]
-  - We compare the first two elements (the 2 and the 5). They are in order already so the 3 is now in the "sub-list"
+  - We compare the first two elements (the 2 and the 5). They are in order already so the 2 is now in the "sub-list"
   - We then look at the 5 and the 3. OH SNAP!!! you don't belong there 5. It then swaps the 5 with the 3. It also checks the already sorted bit and decides it like the 3 living right where it is all happy and in sequential order. Miss Arr look likes this now [2, 3, 5, 1, 4]
   - next up we take a looksy at the 5 and the 1. WHAT THE HELL YOU DOING LIVING THERE ONE!?!?!?!?!
   - we tell it to get in its home so 5 and one swap [2, 3, 1, 5, 4]
