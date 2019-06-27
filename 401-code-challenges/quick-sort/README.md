@@ -46,3 +46,7 @@ ALGORITHM Swap(arr, i, low)
     arr[low] <-- temp`
 
 
+[video joys](https://www.youtube.com/watch?v=eqo2LxRADhU)
+
+[another link to information](https://medium.com/@Charles_Stover/implementing-quicksort-in-javascript-8044a8e2bf39)
+
