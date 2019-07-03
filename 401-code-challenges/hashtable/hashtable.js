@@ -1,24 +1,26 @@
 'use strict';
 
 class Hashtable {
-  constructor(){
-    this.storage = []
+  constructor(size){
+    this.storage = [];
+    this.size = size;
+    this.count = 0; 
   }
 
-  hash(){
-
-  }
-
-  add(){
-
-  }
-
-  get(){
+  hash(key){
 
   }
 
-  contains(){
+  add(key, value){
 
+  }
+
+  get(key){
+    return value;
+  }
+
+  contains(key){
+    //return a boolean if it contains
   }
 
 }
