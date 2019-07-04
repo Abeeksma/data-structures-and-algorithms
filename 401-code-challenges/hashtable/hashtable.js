@@ -8,6 +8,12 @@ class Hashtable {
   }
 
   hash(key){
+    let prime = 2687;
+    let total = 0;
+    if(typeof key !== 'string'){
+      JSON.stringify(key)
+    }
+
 
   }
 
@@ -16,11 +22,11 @@ class Hashtable {
   }
 
   get(key){
-    return value;
+    return this.storage[this.hash(key)];
   }
 
   contains(key){
-    //return a boolean if it contains
+    
   }
 
 }
