@@ -21,7 +21,8 @@ class Hashtable {
   }
 
   add(key, value){
-
+    const tablePos = this.hash(key);
+    this.storage[tablePos] = key;
   }
 
   get(key){
