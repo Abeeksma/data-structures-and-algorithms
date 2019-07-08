@@ -13,8 +13,11 @@ class Hashtable {
     if(typeof key !== 'string'){
       JSON.stringify(key)
     }
-
-
+    for(let i = 0; i < key.length; i++){
+      total += prime * total + key.charCodeAt(i);
+    }
+    total %= this.size;
+    return parseInt(total)
   }
 
   add(key, value){
