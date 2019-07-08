@@ -30,7 +30,12 @@ class Hashtable {
   }
 
   contains(key){
-    
+    if(!this.storage[this.hash(key)]){
+      return null
+    }
+    else {
+      return this.storage[this.hash(key)];
+    }
   }
 
 }
