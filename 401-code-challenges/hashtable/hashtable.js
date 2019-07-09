@@ -1,7 +1,7 @@
 'use strict';
 
 class Hashtable {
-  constructor(size){
+  constructor(size = 100){
     this.storage = [];
     this.size = size;
     this.count = 0; 
@@ -11,8 +11,14 @@ class Hashtable {
     let prime = 2687;
     let total = 0;
     if(typeof key !== 'string'){
-      JSON.stringify(key)
+      key = JSON.stringify(key)
+
     }
+
+    if (!key) {
+      return 0;
+    }
+
     for(let i = 0; i < key.length; i++){
       total += prime * total + key.charCodeAt(i);
     }
@@ -22,19 +28,20 @@ class Hashtable {
 
   add(key, value){
     const tablePos = this.hash(key);
-    this.storage[tablePos] = key;
+    this.storage[tablePos] = { key, value };
   }
 
   get(key){
-    return this.storage[this.hash(key)];
+    let kvp = this.storage[this.hash(key)];
+    return kvp ? kvp.value : null;
   }
 
   contains(key){
     if(!this.storage[this.hash(key)]){
-      return null
+      return false;
     }
     else {
-      return this.storage[this.hash(key)];
+      return true;
     }
   }
 
