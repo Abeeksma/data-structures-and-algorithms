@@ -28,19 +28,20 @@ class Hashtable {
 
   add(key, value){
     const tablePos = this.hash(key);
-    this.storage[tablePos] = key;
+    this.storage[tablePos] = { key, value };
   }
 
   get(key){
-    return this.storage[this.hash(key)];
+    let kvp = this.storage[this.hash(key)];
+    return kvp ? kvp.value : null;
   }
 
   contains(key){
     if(!this.storage[this.hash(key)]){
-      return null
+      return false;
     }
     else {
-      return this.storage[this.hash(key)];
+      return true;
     }
   }
 
