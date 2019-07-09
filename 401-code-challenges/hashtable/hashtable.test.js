@@ -41,6 +41,41 @@ describe('the hashtable', () => {
       expect(ht.contains('alexander')).toBe(true);
       expect(ht.get('alexander')).toBe('beeksma');
     });
+
+    it('replaces existing value', () => {
+      // Arrange
+      let ht = new Hashtable(2);
+
+      // Act
+      ht.add('alexander', 'beeksma');
+      ht.add('alexander', 'BEEKSMA');
+
+      // Assert
+      expect(ht.contains('alexander')).toBe(true);
+      expect(ht.get('alexander')).toBe('BEEKSMA');
+    });
+
+    // TODO: make me pass
+    it.skip('handles collisions', () => {
+      // Arrange
+      let ht = new Hashtable(2);
+
+      let key1 = 'alexander';
+      let key2 = 'ALEXANDER';
+      expect(ht.hash(key1)).toEqual(ht.hash(key2));
+
+      // Act
+      ht.add(key1, 'beeksma');
+      // Collision!
+      ht.add(key2, 'BEEKSMA');
+
+      // Assert
+      expect(ht.contains(key1)).toBe(true);
+      expect(ht.get(key1)).toBe('beeksma');
+
+      expect(ht.contains(key2)).toBe(true);
+      expect(ht.get(key2)).toBe('BEEKSMA');
+    });
   });
 
   describe('hash()', () => {
