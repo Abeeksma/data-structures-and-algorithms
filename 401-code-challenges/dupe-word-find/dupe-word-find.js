@@ -16,3 +16,13 @@ if no reapeted words return 'no words repeated'
 
 */
 
+const Hashtable = require('../hashtable/hashtable');
+
+function reapetedWord(string){
+  
+  let words = string.toLowerCase().split('');
+  
+
+}
+
+module.exports = reapetedWord;
