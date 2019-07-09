@@ -18,11 +18,19 @@ if no reapeted words return 'no words repeated'
 
 const Hashtable = require('../hashtable/hashtable');
 
-function reapetedWord(string){
-  
-  let words = string.toLowerCase().split('');
-  
 
+
+function reapetedWord(string){
+  let table = new Hashtable(128);
+  let words = string.toLowerCase().split('');
+  for(let i = 0; i < words.length; i++){
+    if (table.contains(words[i] === true)){
+      return words[i];
+    }
+    else{
+      table.add(words[i], words[i]);
+    }
+  }
 }
 
 module.exports = reapetedWord;
