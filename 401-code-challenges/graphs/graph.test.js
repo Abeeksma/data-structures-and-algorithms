@@ -2,8 +2,11 @@
 
 const Graph = require('./graph');
 
+let testGraph = new Graph ();
+
 describe('The Graph', () => {
   it('can add a node to the graph', () => {
+    expect(testGraph.addNode())
 
   });
 

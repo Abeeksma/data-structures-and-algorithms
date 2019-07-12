@@ -33,13 +33,14 @@ class Graph {
     return nodeCollection;
   }
 
+  // do i need do a traversal of the entire thing and look at edge connections
   getNeighbors() {
-
+    
   }
 
   //number of nodes
   size() {
-
+    return this.nodeCount;
   }
 
 }
