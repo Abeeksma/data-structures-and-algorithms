@@ -5,8 +5,9 @@ const Graph = require('./graph');
 let testGraph = new Graph ();
 
 describe('The Graph', () => {
+  testGraph.addNode('node1');
   it('can add a node to the graph', () => {
-    expect(testGraph.addNode())
+    expect(testGraph.getNodes()).toEqual('node1')
 
   });
 

@@ -1,48 +1,52 @@
 'use strict';
 
+const Q = require('../stacks-and-queues/stack-and-queue.test');
+
+//reworked graph implementation with Austin so this is essentially his and I want to make sure that is clear
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.edges = [];
+  }
+}
+
 class Graph {
-  constructor(){
-    this.nodes = [],
-    this.edges = {},
-    this.nodeCount = 0,
-    this.edgeCount = 0,
+  constructor() {
+    this.adjList = new Map();
   }
 
-  addNode(node) {
-    this.nodes.push(node);
-    this.edges[node] = [];
-    this.nodeCount += 1; 
+  addNode(value) {
+    if (!this.adjList[value]) {
+      let newNode = new Node(value);
+      this.adjList.set(value, newNode);
+      return newNode;
+    }
+    return `Duplicate!`;
   }
 
-  addEdge(node1, node2, weight = 1) {
-    this.edges[node1].push({node: node2, weight});  
-    this.edges[node2].push({node: node1, weight});
-    this.edgeCount +=1;
-  }
-
-  addEdgeDirected(node1, node2, weight = 1){
-    this.edges[node1].push({node: node2, weight});
-    this.edgeCount += 1; 
+  addEdge(v1, v2, weight = 1) {
+    v1 = this.adjList.get(v1);
+    v2 = this.adjList.get(v2);
+    if (!v1 || !v2) return `Please return two nodes!`;
+    v1.edges.push({ node: v2, weight });
+    v2.edges.push({ node: v1, weight });
   }
 
   getNodes() {
-    let nodeCollection = [];
-    for( let i = 0; i < this.nodes.length; i ++ ) {
-      nodeCollection.push(this.nodes[i])
-    }
-    return nodeCollection;
+    return Array.from(this.adjList.keys());
   }
 
-  // do i need do a traversal of the entire thing and look at edge connections
-  getNeighbors() {
-    
+  getNeighbors(value) {
+    let node = this.adjList.get(value);
+    let neighbors = node.edges;
+    return neighbors;
   }
 
-  //number of nodes
   size() {
-    return this.nodeCount;
+    let arr = this.getNodes();
+    return arr.length;
   }
-
 }
 
 module.exports = Graph;

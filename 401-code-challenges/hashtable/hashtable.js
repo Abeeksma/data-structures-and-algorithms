@@ -29,6 +29,10 @@ class Hashtable {
   add(key, value){
     const tablePos = this.hash(key);
     this.storage[tablePos] = { key, value };
+    //check if there is a key in tablepos
+    //if key is in tablepos already 
+    //turn it to and array and push {k, v} into array?
+
   }
 
   get(key){
